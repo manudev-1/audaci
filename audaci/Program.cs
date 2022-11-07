@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace audaci
 {
@@ -7,8 +8,10 @@ namespace audaci
         static void Main(string[] args)
         {
             // Modello Dati
-            float result = 6f/6f * 5f/6f * 4f/6f * 3f/6f * 2f/6f * 1f/6f;
-            int n, c = 0;
+            float result;
+            Random gen = new Random();
+            int n, rand,i = 0, cont = 0;
+            List<int> mem = new List<int>();
 
             // Input
             Console.WriteLine("Inserisci un numero");
@@ -21,14 +24,28 @@ namespace audaci
                 Console.WriteLine("Reinserisci il numero:");
                 n = int.Parse(Console.ReadLine());
             }// Fine while
-            while (c < n)
+            while (i < n)
             {
-                result *= 6f / 6f;
-                c++;
+                rand = gen.Next(1,6+1);
+                //Console.WriteLine(rand);      Debug Line
+                if (!mem.Contains(rand))
+                {
+                    mem.Add(rand);
+                    cont++;
+                }
+                i++;
             }// Fine while
 
+            /*
+            foreach(var item in mem)
+            {
+                Console.Write(item);            Denug Line
+            }
+            */
+
             // Output
-            Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: {(result * 100f).ToString("N2")}");
+            result = (float)cont / n;
+            Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: {result * 100f}%");
 
         }// Fine Programma
     }
