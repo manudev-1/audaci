@@ -39,7 +39,7 @@ namespace audaci
             /*
             foreach(var item in mem)
             {
-                Console.Write(item);            Denug Line
+                Console.Write(item);            Debug Line
             }
             */
 
