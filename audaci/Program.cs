@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace audaci
 {
@@ -8,7 +9,7 @@ namespace audaci
         static void Main(string[] args)
         {
             // Modello Dati
-            float result;
+            float result = 0;
             Random gen = new Random();
             int n, rand,i = 0, cont = 0;
             List<int> mem = new List<int>();
@@ -44,8 +45,12 @@ namespace audaci
             */
 
             // Output
-            result = (float)cont / n;
-            Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: {result * 100f}%");
+            for(i=0; i < mem.Count(); i++)
+            {
+                result += 1f/6f;
+            }
+            result /= 6f;
+            Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: {(result * 100f).ToString("N2")}%");
 
         }// Fine Programma
     }
