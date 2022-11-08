@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace audaci
 {
@@ -11,28 +10,31 @@ namespace audaci
             // Modello Dati
             float result = 0;
             Random gen = new Random();
-            int n, rand,i = 0, cont = 0;
-            List<int> mem = new List<int>();
+            int n, rand,i = 0, cont1, cont2, cont3, cont4, cont5, cont6;
 
             // Input
+            cont1 = cont2 = cont3 = cont4 = cont5 = cont6 = 0;
             Console.WriteLine("Inserisci un numero");
             n = int.Parse(Console.ReadLine());
 
-            // Elaborazione
-            while (n < 6)
+            while (n < 0)
             {
-                Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: 0%");
-                Console.WriteLine("Reinserisci il numero:");
+                Console.WriteLine("Numero non valido, Reinseriscilo");
                 n = int.Parse(Console.ReadLine());
-            }// Fine while
+            }
+            // Elaborazione
             while (i < n)
             {
                 rand = gen.Next(1,6+1);
                 //Console.WriteLine(rand);      Debug Line
-                if (!mem.Contains(rand))
+                switch (rand)
                 {
-                    mem.Add(rand);
-                    cont++;
+                    case 1: cont1++; break;
+                    case 2: cont2++; break;
+                    case 3: cont3++; break;
+                    case 4: cont4++; break;
+                    case 5: cont5++; break;
+                    case 6: cont6++; break;
                 }
                 i++;
             }// Fine while
@@ -45,12 +47,7 @@ namespace audaci
             */
 
             // Output
-            for(i=0; i < mem.Count(); i++)
-            {
-                result += 1f/6f;
-            }
-            result /= 6f;
-            Console.WriteLine($"La probabilità che da {n} tiri escano tutte le facce di un dado sono: {(result * 100f).ToString("N2")}%");
+            Console.WriteLine($"Le probabilità che da {n} tiri escano le facce di un dado sono: \n1: {(float)cont1/n * 100f:N2}\n2: {(float)cont2 / n * 100f:N2}\n3: {(float)cont3 / n * 100f:N2}\n4: {(float)cont4 / n * 100f:N2}\n5: {(float)cont5 / n * 100f:N2}\n6: {(float)cont6 / n * 100f:N2}%");
 
         }// Fine Programma
     }
