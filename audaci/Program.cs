@@ -8,7 +8,6 @@ namespace audaci
         static void Main(string[] args)
         {
             // Modello Dati
-            float result = 0;
             Random gen = new Random();
             int n, rand,i = 0, cont1, cont2, cont3, cont4, cont5, cont6;
 
